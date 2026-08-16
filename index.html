@@ -448,10 +448,10 @@ function tickCountdown(){
   document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
   if(diff<=0) lockEverything();
 }
+let locked = Date.now() > new Date(EVENT.lockTimestamp).getTime();
+
 setInterval(tickCountdown, 1000);
 tickCountdown();
-
-let locked = Date.now() > new Date(EVENT.lockTimestamp).getTime();
 
 function lockEverything(){
   locked = true;
@@ -642,7 +642,7 @@ async function toggleAdmin(){
       return;
     }
     adminUnlocked = true;
-    adminSecret = attempt; // usada pra autenticar as chamadas ao Apps Script (o backend confere de novo, server-side)
+    adminSecret = attempt;
   }
   panel.classList.add('show');
   renderResultsForm();
@@ -667,7 +667,6 @@ function renderResultsForm(){
     });
   });
 
-  // pré-carrega resultados já salvos, se houver
   fetch(`${WEBAPP_URL}?action=resultados&secret=${encodeURIComponent(adminSecret)}`)
     .then(r=>r.json())
     .then(json=>{
