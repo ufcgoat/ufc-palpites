@@ -22,235 +22,103 @@
   html,body{background:var(--bg); color:var(--text); font-family:'Barlow Condensed', sans-serif; overflow-x:hidden;}
   .display{font-family:'Anton', sans-serif; text-transform:uppercase; letter-spacing:0.01em;}
   .mono{font-family:'Space Mono', monospace;}
-
-  /* ---------- HERO ---------- */
   .hero{
-    position:relative;
-    min-height:92vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
+    position:relative; min-height:92vh; display:flex; flex-direction:column; justify-content:center;
     padding:32px 20px 40px;
     background:
       linear-gradient(180deg, rgba(11,11,13,0.4) 0%, rgba(11,11,13,0.95) 78%, var(--bg) 100%),
       repeating-linear-gradient(115deg, rgba(228,0,43,0.06) 0px, rgba(228,0,43,0.06) 2px, transparent 2px, transparent 46px);
-    border-bottom:1px solid var(--border);
-    overflow:hidden;
+    border-bottom:1px solid var(--border); overflow:hidden;
   }
   .hero::before{
-    content:"";
-    position:absolute;
-    top:-40%; right:-30%;
-    width:120%; height:180%;
+    content:""; position:absolute; top:-40%; right:-30%; width:120%; height:180%;
     background:conic-gradient(from 210deg at 70% 30%, rgba(228,0,43,0.16), transparent 35%);
     pointer-events:none;
   }
   .eyebrow{
-    display:flex; align-items:center; gap:10px;
-    color:var(--red); font-weight:700; font-size:14px; letter-spacing:0.16em;
-    text-transform:uppercase; margin-bottom:14px;
+    display:flex; align-items:center; gap:10px; color:var(--red); font-weight:700; font-size:14px;
+    letter-spacing:0.16em; text-transform:uppercase; margin-bottom:14px;
   }
   .eyebrow::before{content:""; width:22px; height:2px; background:var(--red);}
-  .hero h1{
-    font-size:clamp(52px, 15vw, 96px);
-    line-height:0.88;
-    color:var(--text);
-  }
+  .hero h1{font-size:clamp(52px, 15vw, 96px); line-height:0.88; color:var(--text);}
   .hero h1 span{color:var(--red);}
-  .hero-sub{
-    font-size:clamp(18px,4.2vw,22px); color:var(--text-dim); margin-top:10px; max-width:480px;
-    font-weight:500;
-  }
-  .hero-meta{
-    display:flex; flex-wrap:wrap; gap:10px 22px; margin-top:22px;
-    font-size:15px; color:var(--text-dim); font-weight:600;
-  }
+  .hero-sub{font-size:clamp(18px,4.2vw,22px); color:var(--text-dim); margin-top:10px; max-width:480px; font-weight:500;}
+  .hero-meta{display:flex; flex-wrap:wrap; gap:10px 22px; margin-top:22px; font-size:15px; color:var(--text-dim); font-weight:600;}
   .hero-meta b{color:var(--text); font-weight:700;}
-
   .countdown-block{margin-top:32px;}
   .countdown-label{font-size:13px; letter-spacing:0.14em; color:var(--text-dim); text-transform:uppercase; margin-bottom:8px; font-weight:700;}
   .countdown{display:flex; gap:10px;}
-  .cd-unit{
-    background:var(--surface); border:1px solid var(--border); border-radius:6px;
-    padding:10px 4px; text-align:center; min-width:64px; position:relative;
-  }
+  .cd-unit{background:var(--surface); border:1px solid var(--border); border-radius:6px; padding:10px 4px; text-align:center; min-width:64px; position:relative;}
   .cd-unit .num{font-size:30px; font-weight:700; color:var(--gold);}
   .cd-unit .lbl{font-size:10px; color:var(--text-dim); letter-spacing:0.1em; text-transform:uppercase; margin-top:2px;}
-
-  .prize-strip{
-    margin-top:28px; display:flex; align-items:center; gap:14px;
-    background:linear-gradient(90deg, var(--red-dim), transparent);
-    border-left:3px solid var(--red);
-    padding:14px 16px; border-radius:4px;
-  }
+  .prize-strip{margin-top:28px; display:flex; align-items:center; gap:14px; background:linear-gradient(90deg, var(--red-dim), transparent); border-left:3px solid var(--red); padding:14px 16px; border-radius:4px;}
   .prize-strip .amt{font-family:'Anton',sans-serif; font-size:26px; color:var(--gold);}
   .prize-strip .txt{font-size:15px; color:var(--text-dim); font-weight:600;}
-
-  .cta-scroll{
-    margin-top:30px;
-    background:var(--red); color:#fff; border:none; border-radius:6px;
-    font-family:'Anton', sans-serif; text-transform:uppercase; letter-spacing:0.04em;
-    font-size:17px; padding:16px 22px; width:100%; max-width:420px;
-    cursor:pointer; transition:transform .15s ease, box-shadow .15s ease;
-    box-shadow:0 8px 24px -8px rgba(228,0,43,0.6);
-  }
+  .cta-scroll{margin-top:30px; background:var(--red); color:#fff; border:none; border-radius:6px; font-family:'Anton', sans-serif; text-transform:uppercase; letter-spacing:0.04em; font-size:17px; padding:16px 22px; width:100%; max-width:420px; cursor:pointer; transition:transform .15s ease, box-shadow .15s ease; box-shadow:0 8px 24px -8px rgba(228,0,43,0.6);}
   .cta-scroll:active{transform:scale(0.98);}
-
-  /* ---------- RULES ---------- */
   .section{padding:56px 20px; max-width:640px; margin:0 auto;}
-  .section-title{
-    font-size:clamp(30px,7vw,40px); margin-bottom:6px;
-  }
+  .section-title{font-size:clamp(30px,7vw,40px); margin-bottom:6px;}
   .section-title .n{color:var(--red);}
   .section-desc{color:var(--text-dim); font-size:17px; margin-bottom:26px; font-weight:500;}
-
   .rules-list{list-style:none; display:flex; flex-direction:column; gap:14px;}
-  .rules-list li{
-    display:flex; gap:14px; background:var(--surface); border:1px solid var(--border);
-    border-radius:8px; padding:16px;
-  }
-  .rules-list .ico{
-    font-family:'Anton',sans-serif; color:var(--red); font-size:20px; min-width:26px;
-  }
+  .rules-list li{display:flex; gap:14px; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:16px;}
+  .rules-list .ico{font-family:'Anton',sans-serif; color:var(--red); font-size:20px; min-width:26px;}
   .rules-list .body b{display:block; font-size:16px; margin-bottom:2px; font-weight:700;}
   .rules-list .body span{font-size:14.5px; color:var(--text-dim); font-weight:500; line-height:1.35;}
-
-  /* ---------- FIGHTS ---------- */
-  .progress-bar-wrap{
-    position:sticky; top:0; z-index:20; background:rgba(11,11,13,0.92); backdrop-filter:blur(6px);
-    padding:12px 20px; border-bottom:1px solid var(--border);
-  }
+  .progress-bar-wrap{position:sticky; top:0; z-index:20; background:rgba(11,11,13,0.92); backdrop-filter:blur(6px); padding:12px 20px; border-bottom:1px solid var(--border);}
   .progress-bar-inner{max-width:640px; margin:0 auto; display:flex; align-items:center; gap:12px;}
   .progress-track{flex:1; height:6px; background:var(--surface-raised); border-radius:3px; overflow:hidden;}
   .progress-fill{height:100%; background:linear-gradient(90deg, var(--red), var(--gold)); width:0%; transition:width .3s ease;}
   .progress-count{font-size:13px; font-weight:700; color:var(--text-dim); white-space:nowrap;}
   .progress-count b{color:var(--gold);}
-
-  .fight-card{
-    background:var(--surface); border:1px solid var(--border); border-radius:10px;
-    padding:16px; margin-bottom:14px;
-  }
-  .fight-tag{
-    font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-dim);
-    font-weight:700; margin-bottom:10px; display:flex; justify-content:space-between;
-  }
+  .fight-card{background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:16px; margin-bottom:14px;}
+  .fight-tag{font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-dim); font-weight:700; margin-bottom:10px; display:flex; justify-content:space-between;}
   .fight-tag .title-belt{color:var(--gold);}
   .matchup{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:8px;}
-  .fighter{
-    border:1px solid var(--border); background:var(--bg); border-radius:8px;
-    padding:16px 10px; text-align:center; cursor:pointer; transition:all .15s ease;
-    position:relative;
-  }
-  .fighter .initial{
-    width:44px; height:44px; border-radius:50%; background:var(--surface-raised);
-    display:flex; align-items:center; justify-content:center; margin:0 auto 8px;
-    font-family:'Anton',sans-serif; font-size:16px; color:var(--text-dim); border:1px solid var(--border);
-  }
+  .fighter{border:1px solid var(--border); background:var(--bg); border-radius:8px; padding:16px 10px; text-align:center; cursor:pointer; transition:all .15s ease; position:relative;}
+  .fighter .initial{width:44px; height:44px; border-radius:50%; background:var(--surface-raised); display:flex; align-items:center; justify-content:center; margin:0 auto 8px; font-family:'Anton',sans-serif; font-size:16px; color:var(--text-dim); border:1px solid var(--border);}
   .fighter .name{font-size:15px; font-weight:700; line-height:1.15;}
   .fighter .rec{font-size:11.5px; color:var(--text-dim); margin-top:3px; font-weight:600;}
-  .fighter.selected{
-    border-color:var(--red); background:linear-gradient(180deg, rgba(228,0,43,0.14), rgba(228,0,43,0.02));
-  }
+  .fighter.selected{border-color:var(--red); background:linear-gradient(180deg, rgba(228,0,43,0.14), rgba(228,0,43,0.02));}
   .fighter.selected .initial{background:var(--red); color:#fff; border-color:var(--red);}
-  .fighter.selected::after{
-    content:"✓ PALPITE"; position:absolute; top:-9px; left:50%; transform:translateX(-50%);
-    background:var(--red); color:#fff; font-size:9.5px; font-weight:700; letter-spacing:0.08em;
-    padding:2px 7px; border-radius:10px;
-  }
-  .vs-divider{
-    font-family:'Anton',sans-serif; font-size:14px; color:var(--text-dim); position:relative;
-    width:26px; height:26px; display:flex; align-items:center; justify-content:center;
-  }
-  .vs-slash{
-    position:absolute; width:2px; height:34px; background:var(--border); transform:rotate(18deg);
-    transition:all .2s ease;
-  }
+  .fighter.selected::after{content:"✓ PALPITE"; position:absolute; top:-9px; left:50%; transform:translateX(-50%); background:var(--red); color:#fff; font-size:9.5px; font-weight:700; letter-spacing:0.08em; padding:2px 7px; border-radius:10px;}
+  .vs-divider{font-family:'Anton',sans-serif; font-size:14px; color:var(--text-dim); position:relative; width:26px; height:26px; display:flex; align-items:center; justify-content:center;}
+  .vs-slash{position:absolute; width:2px; height:34px; background:var(--border); transform:rotate(18deg); transition:all .2s ease;}
   .fight-card.picked-a .vs-slash{background:var(--red); transform:rotate(18deg) translateX(-6px); box-shadow:0 0 10px rgba(228,0,43,0.6);}
   .fight-card.picked-b .vs-slash{background:var(--red); transform:rotate(18deg) translateX(6px); box-shadow:0 0 10px rgba(228,0,43,0.6);}
-
-  /* ---------- SUBMIT BAR ---------- */
   .submit-section{padding:20px; max-width:640px; margin:0 auto 40px;}
-  .handle-field{
-    background:var(--surface); border:1px solid var(--border); border-radius:8px;
-    display:flex; align-items:center; padding:0 14px; margin-bottom:12px;
-  }
+  .handle-field{background:var(--surface); border:1px solid var(--border); border-radius:8px; display:flex; align-items:center; padding:0 14px; margin-bottom:12px;}
   .handle-field span{color:var(--text-dim); font-weight:700; font-size:18px;}
-  .handle-field input{
-    flex:1; background:transparent; border:none; outline:none; color:var(--text);
-    font-size:17px; padding:14px 6px; font-family:'Barlow Condensed', sans-serif; font-weight:600;
-  }
-  .follow-check{
-    display:flex; align-items:flex-start; gap:10px; margin-bottom:16px; font-size:14px;
-    color:var(--text-dim); font-weight:500; line-height:1.4;
-  }
+  .handle-field input{flex:1; background:transparent; border:none; outline:none; color:var(--text); font-size:17px; padding:14px 6px; font-family:'Barlow Condensed', sans-serif; font-weight:600;}
+  .follow-check{display:flex; align-items:flex-start; gap:10px; margin-bottom:16px; font-size:14px; color:var(--text-dim); font-weight:500; line-height:1.4;}
   .follow-check input{margin-top:3px; accent-color:var(--red);}
   .follow-check a{color:var(--gold); font-weight:700; text-decoration:none;}
-
-  .lock-bar{
-    display:flex; align-items:center; gap:12px; background:var(--surface-raised);
-    border:1px solid var(--border); border-radius:8px; padding:14px 16px; margin-bottom:14px;
-    transition:all .25s ease;
-  }
+  .lock-bar{display:flex; align-items:center; gap:12px; background:var(--surface-raised); border:1px solid var(--border); border-radius:8px; padding:14px 16px; margin-bottom:14px; transition:all .25s ease;}
   .lock-bar.locked{border-color:var(--red); background:linear-gradient(90deg, rgba(228,0,43,0.16), transparent);}
   .lock-icon{font-size:20px;}
   .lock-text b{display:block; font-size:14px; font-weight:700;}
   .lock-text span{font-size:12.5px; color:var(--text-dim);}
-
-  .submit-btn{
-    width:100%; background:var(--border); color:var(--text-dim); border:none; border-radius:8px;
-    font-family:'Anton',sans-serif; text-transform:uppercase; letter-spacing:0.04em; font-size:18px;
-    padding:18px; cursor:not-allowed; transition:all .2s ease;
-  }
-  .submit-btn.ready{
-    background:var(--red); color:#fff; cursor:pointer;
-    box-shadow:0 8px 24px -8px rgba(228,0,43,0.6);
-  }
+  .submit-btn{width:100%; background:var(--border); color:var(--text-dim); border:none; border-radius:8px; font-family:'Anton',sans-serif; text-transform:uppercase; letter-spacing:0.04em; font-size:18px; padding:18px; cursor:not-allowed; transition:all .2s ease;}
+  .submit-btn.ready{background:var(--red); color:#fff; cursor:pointer; box-shadow:0 8px 24px -8px rgba(228,0,43,0.6);}
   .submit-btn.ready:active{transform:scale(0.98);}
-
-  .confirm-box{
-    display:none; text-align:center; padding:30px 20px; background:var(--surface);
-    border:1px solid var(--red); border-radius:10px; margin-top:16px;
-  }
+  .confirm-box{display:none; text-align:center; padding:30px 20px; background:var(--surface); border:1px solid var(--red); border-radius:10px; margin-top:16px;}
   .confirm-box.show{display:block;}
   .confirm-box .big{font-family:'Anton',sans-serif; font-size:26px; color:var(--gold); margin-bottom:8px;}
   .confirm-box p{color:var(--text-dim); font-size:15px; margin-bottom:4px;}
-
-  footer{
-    text-align:center; padding:30px 20px 50px; color:var(--text-dim); font-size:13px;
-  }
-  .admin-link{
-    display:inline-block; margin-top:14px; color:var(--text-dim); font-size:12px;
-    text-decoration:underline; cursor:pointer; background:none; border:none;
-  }
-  .admin-panel{
-    display:none; max-width:640px; margin:0 auto 40px; padding:0 20px;
-  }
+  footer{text-align:center; padding:30px 20px 50px; color:var(--text-dim); font-size:13px;}
+  .admin-link{display:inline-block; margin-top:14px; color:var(--text-dim); font-size:12px; text-decoration:underline; cursor:pointer; background:none; border:none;}
+  .admin-panel{display:none; max-width:640px; margin:0 auto 40px; padding:0 20px;}
   .admin-panel.show{display:block;}
-  .admin-panel textarea{
-    width:100%; min-height:200px; background:var(--surface); color:var(--text);
-    border:1px solid var(--border); border-radius:8px; padding:12px; font-family:'Space Mono',monospace;
-    font-size:12px;
-  }
-  .admin-panel button{
-    margin-top:10px; background:var(--surface-raised); color:var(--text); border:1px solid var(--border);
-    border-radius:6px; padding:10px 16px; font-weight:700; cursor:pointer; font-family:'Barlow Condensed',sans-serif;
-  }
-  .result-fight{
-    background:var(--surface); border:1px solid var(--border); border-radius:8px;
-    padding:12px 14px; margin-bottom:8px;
-  }
+  .admin-panel textarea{width:100%; min-height:200px; background:var(--surface); color:var(--text); border:1px solid var(--border); border-radius:8px; padding:12px; font-family:'Space Mono',monospace; font-size:12px;}
+  .admin-panel button{margin-top:10px; background:var(--surface-raised); color:var(--text); border:1px solid var(--border); border-radius:6px; padding:10px 16px; font-weight:700; cursor:pointer; font-family:'Barlow Condensed',sans-serif;}
+  .result-fight{background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px 14px; margin-bottom:8px;}
   .result-fight .rf-label{font-size:12.5px; color:var(--text-dim); font-weight:700; margin-bottom:8px;}
   .result-options{display:flex; gap:8px;}
-  .result-options label{
-    flex:1; display:flex; align-items:center; gap:6px; background:var(--bg); border:1px solid var(--border);
-    border-radius:6px; padding:8px 10px; font-size:14px; font-weight:600; cursor:pointer;
-  }
+  .result-options label{flex:1; display:flex; align-items:center; gap:6px; background:var(--bg); border:1px solid var(--border); border-radius:6px; padding:8px 10px; font-size:14px; font-weight:600; cursor:pointer;}
   .result-options input{accent-color:var(--red);}
   .result-options label.chosen{border-color:var(--gold); color:var(--gold);}
   .ranking-table{width:100%; border-collapse:collapse; font-size:14px; margin-top:10px;}
-  .ranking-table th, .ranking-table td{
-    text-align:left; padding:8px 10px; border-bottom:1px solid var(--border);
-  }
+  .ranking-table th, .ranking-table td{text-align:left; padding:8px 10px; border-bottom:1px solid var(--border);}
   .ranking-table th{color:var(--text-dim); font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase;}
   .ranking-table tr.leader td{color:var(--gold); font-weight:700;}
   .ranking-table tr.dq td{color:var(--text-dim); text-decoration:line-through; opacity:0.6;}
@@ -260,7 +128,6 @@
 </head>
 <body>
 
-<!-- ======================= HERO ======================= -->
 <section class="hero" id="hero">
   <div class="eyebrow">@__ufc_goat__ apresenta</div>
   <h1 class="display" id="eventTitle">UFC<br><span>330</span></h1>
@@ -269,7 +136,6 @@
     <span>📍 <b id="eventVenue">Xfinity Mobile Arena, Philadelphia</b></span>
     <span>🗓️ <b id="eventDate">15 de agosto</b></span>
   </div>
-
   <div class="countdown-block">
     <div class="countdown-label">Palpites travam em</div>
     <div class="countdown mono">
@@ -279,18 +145,15 @@
       <div class="cd-unit"><div class="num" id="cd-s">00</div><div class="lbl">seg</div></div>
     </div>
   </div>
-
   <div class="prize-strip">
     <div class="amt" id="prizeAmount">R$500</div>
     <div class="txt">pago via PIX pra quem mais acertar os resultados</div>
   </div>
-
   <button class="cta-scroll" onclick="document.getElementById('regras').scrollIntoView({behavior:'smooth'})">
     Ver regras e dar meu palpite ↓
   </button>
 </section>
 
-<!-- ======================= REGRAS ======================= -->
 <section class="section" id="regras">
   <h2 class="section-title display"><span class="n">01.</span> Regras</h2>
   <p class="section-desc">Simples: acerte mais que os outros e ganha.</p>
@@ -309,7 +172,6 @@
   </ul>
 </section>
 
-<!-- ======================= FIGHTS ======================= -->
 <div class="progress-bar-wrap">
   <div class="progress-bar-inner">
     <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
@@ -323,7 +185,6 @@
   <div id="fightsContainer"></div>
 </section>
 
-<!-- ======================= SUBMIT ======================= -->
 <section class="submit-section">
   <div class="handle-field">
     <span>@</span>
@@ -338,7 +199,6 @@
     <span>Confirmo que marquei 3 amigos nos comentários do post do desafio</span>
   </label>
   <p style="font-size:12.5px; color:var(--text-dim); font-weight:600; margin:-6px 0 16px;">⚠️ Se qualquer uma dessas confirmações for falsa, seu palpite é desclassificado na apuração.</p>
-
   <div class="lock-bar" id="lockBar">
     <span class="lock-icon" id="lockIcon">🔓</span>
     <div class="lock-text">
@@ -346,9 +206,7 @@
       <span id="lockSub">Escolha um vencedor em cada luta pra destravar o envio</span>
     </div>
   </div>
-
   <button class="submit-btn" id="submitBtn" disabled>Enviar palpites</button>
-
   <div class="confirm-box" id="confirmBox">
     <div class="big display">PALPITE TRAVADO ✅</div>
     <p>Boa sorte, <b id="confirmHandle"></b>!</p>
@@ -363,24 +221,17 @@
 <div class="admin-panel" id="adminPanel">
   <h3 class="section-title display" style="font-size:22px;">Painel do organizador</h3>
   <p class="section-desc" style="font-size:14px;">Os dados ficam salvos na sua planilha do Google Sheets (aba "Palpites"). Essa senha protege o acesso, mas evite compartilhar o link com <code>?admin=1</code> com qualquer pessoa.</p>
-
   <button onclick="loadAdminData()">Ver todos os palpites (bruto)</button>
   <textarea id="adminOutput" readonly placeholder="Clique em carregar..."></textarea>
-
   <h4 class="display" style="font-size:18px; margin-top:26px; margin-bottom:4px;">Resultados oficiais</h4>
   <p style="font-size:13.5px; color:var(--text-dim); margin-bottom:12px;">Depois que as lutas acabarem, marque quem venceu cada uma. Só assim dá pra calcular o ranking.</p>
   <div id="resultsForm"></div>
   <button onclick="saveResults()">Salvar resultados</button>
   <button onclick="calcRanking()" style="margin-left:8px;">Calcular ranking</button>
-
   <div id="rankingOutput" style="margin-top:16px;"></div>
 </div>
 
 <script>
-/* =========================================================================
-   CONFIG DO EVENTO — troque só isso aqui pra reutilizar em outro evento UFC
-   ========================================================================= */
-
 const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbx7gQR0kDe4og_hTSI0nroUQ88uL6zNIYvV-0Fi9tVPgYd5tAWsDS9T-tZdRWZq1wlkOw/exec";
 
 const EVENT = {
@@ -711,7 +562,7 @@ async function calcRanking(){
   try{
     const r = await fetch(`${WEBAPP_URL}?action=palpites&secret=${encodeURIComponent(adminSecret)}`);
     const json = await r.json();
-    entries = json.entries || [];
+    entries = (json.entries || []).filter(e => e.event === EVENT.id);
   }catch(e){ entries = []; }
 
   if(entries.length === 0){
@@ -756,11 +607,12 @@ async function loadAdminData(){
   try{
     const r = await fetch(`${WEBAPP_URL}?action=palpites&secret=${encodeURIComponent(adminSecret)}`);
     const json = await r.json();
-    if(!json.entries || json.entries.length === 0){
-      out.value = 'Nenhum palpite encontrado ainda.';
+    const entries = (json.entries || []).filter(e => e.event === EVENT.id);
+    if(entries.length === 0){
+      out.value = 'Nenhum palpite encontrado ainda para ' + EVENT.id + '.';
       return;
     }
-    out.value = json.entries.map(e=>JSON.stringify(e)).join('\n\n');
+    out.value = entries.map(e=>JSON.stringify(e)).join('\n\n');
   }catch(err){
     out.value = 'Erro ao carregar: ' + err;
   }
