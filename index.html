@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UFC 330 — Palpite Travado</title>
+<title>UFC Sacramento — Palpite Travado</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -357,7 +357,7 @@
 </section>
 
 <footer>
-  UFC 330 · Palpite Travado by @__ufc_goat__
+  UFC Sacramento · Palpite Travado by @__ufc_goat__
 </footer>
 
 <div class="admin-panel" id="adminPanel">
@@ -381,39 +381,35 @@
    CONFIG DO EVENTO — troque só isso aqui pra reutilizar em outro evento UFC
    ========================================================================= */
 
-// Cole aqui a URL do seu Google Apps Script (App da Web), depois de implantar o Code.gs
 const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbx7gQR0kDe4og_hTSI0nroUQ88uL6zNIYvV-0Fi9tVPgYd5tAWsDS9T-tZdRWZq1wlkOw/exec";
 
 const EVENT = {
-  id: "UFC330",                       // muda a cada evento (usado nas chaves de storage)
+  id: "UFCFN285",
   titleLine1: "UFC",
-  titleLine2: "330",
-  matchupLabel: "Makhachev x Machado Garry",
-  venue: "Xfinity Mobile Arena, Philadelphia",
-  dateLabel: "15 de agosto",
-  lockTimestamp: "2026-08-15T15:00:00Z", // horário (UTC) que trava os palpites — sábado 15/08, 12:00 de Brasília (UTC-3)
-  deadlineLabel: "sábado (15/08), 12:00 (horário de Brasília)",
+  titleLine2: "SACRAMENTO",
+  matchupLabel: "Hernandez x Rodrigues",
+  venue: "Golden 1 Center, Sacramento",
+  dateLabel: "22 de agosto",
+  lockTimestamp: "2026-08-22T21:00:00Z",
+  deadlineLabel: "sábado (22/08), 18:00 (horário de Brasília)",
   prizeAmount: "R$30",
-  // Hash SHA-256 da senha do painel (não deixa a senha em texto puro no código).
-  // Pra trocar a senha: rode no console do navegador -> crypto.subtle.digest('SHA-256', new TextEncoder().encode('SUA_NOVA_SENHA')).then(b=>console.log(Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('')))
-  // e cole o resultado abaixo. Senha atual: 3308 (troque antes de divulgar o site)
   adminPinHash: "a4c42a3f5f7103ddb1042c34864a1bd8e7854308d80ab8b4bf41eb46ad62b3dc",
   fights: [
-    { id:"f1",  title:true,  weight:"Cinturão Peso-Welter",   a:{name:"Islam Makhachev", rec:"28-1"},    b:{name:"Ian Machado Garry", rec:"17-1"} },
-    { id:"f2",  title:true,  weight:"Cinturão Peso-Palha (F)",a:{name:"Mackenzie Dern", rec:"16-5"},     b:{name:"Gillian Robertson", rec:"17-8"} },
-    { id:"f3",  title:false, weight:"Peso-Leve",              a:{name:"Jalin Turner", rec:"15-9"},       b:{name:"Kauê Fernandes", rec:"11-2"} },
-    { id:"f4",  title:false, weight:"Peso-Médio",             a:{name:"Mansur Abdul-Malik", rec:"9-1-1"},b:{name:"Dustin Stoltzfus", rec:"16-8"} },
-    { id:"f5",  title:false, weight:"Peso-Leve",              a:{name:"Edson Barboza", rec:"24-14"},     b:{name:"Esteban Ribovics", rec:"15-3"} },
-    { id:"f6",  title:false, weight:"Peso-Welter",            a:{name:"Chidi Njokuani", rec:"25-12"},    b:{name:"Joel Alvarez", rec:"23-4"} },
-    { id:"f7",  title:false, weight:"Peso-Mosca",             a:{name:"Charles Johnson", rec:"19-9"},    b:{name:"Eduardo Chapolin", rec:"15-2"} },
-    { id:"f8",  title:false, weight:"Peso-Médio",             a:{name:"Donte Johnson", rec:"8-0"},       b:{name:"Eric McConico", rec:"11-4-1"} },
-    { id:"f9",  title:false, weight:"Peso-Médio",             a:{name:"Vicente Luque", rec:"24-12-1"},   b:{name:"Tresean Gore", rec:"6-4"} },
-    { id:"f10", title:false, weight:"Meio-Pesado",            a:{name:"Rafael Tobias", rec:"14-2"},      b:{name:"Lucas Fernando", rec:"13-3"} },
-    { id:"f11", title:false, weight:"Peso-Welter",            a:{name:"Neil Magny", rec:"31-14"},        b:{name:"Ramiz Brahimaj", rec:"13-6"} },
-    { id:"f12", title:false, weight:"Peso-Welter",            a:{name:"Jeremiah Wells", rec:"13-4-1"},   b:{name:"Myktybek Orolbai", rec:"16-2-1"} }
+    { id:"f1",  title:true,  weight:"Peso-Médio (Principal)", a:{name:"Anthony Hernandez", rec:"15-3"},   b:{name:"Gregory Rodrigues", rec:"19-6"} },
+    { id:"f2",  title:false, weight:"Peso-Pesado (Co-Main)",  a:{name:"Serghei Spivac", rec:"18-6"},      b:{name:"Vitor Petrino", rec:"14-2"} },
+    { id:"f3",  title:false, weight:"Meio-Pesado",            a:{name:"Reinier de Ridder", rec:"21-4"},   b:{name:"Roman Dolidze", rec:"15-5"} },
+    { id:"f4",  title:false, weight:"Peso-Leve",              a:{name:"MarQuel Mederos", rec:"11-1-1"},   b:{name:"Mason Jones", rec:"18-2"} },
+    { id:"f5",  title:false, weight:"Peso-Mosca (F)",         a:{name:"Carli Judice", rec:"6-2"},         b:{name:"Jeisla Chaves", rec:"7-0"} },
+    { id:"f6",  title:false, weight:"Peso-Pesado",            a:{name:"Anthony Wint", rec:"7-0"},         b:{name:"Terrance Chatman", rec:"5-1"} },
+    { id:"f7",  title:false, weight:"Peso-Pena",              a:{name:"Jamall Emmers", rec:"22-8"},       b:{name:"Lerryan Douglas", rec:"14-5"} },
+    { id:"f8",  title:false, weight:"Peso-Pesado",            a:{name:"Shamil Gaziev", rec:"14-3"},       b:{name:"Kennedy Nzechukwu", rec:"14-6-1"} },
+    { id:"f9",  title:false, weight:"Peso-Leve",              a:{name:"Nasrat Haqparast", rec:"18-6"},    b:{name:"Chris Padilla", rec:"17-6-1"} },
+    { id:"f10", title:false, weight:"Peso-Pena",              a:{name:"Márcio Barbosa", rec:"18-2"},      b:{name:"Ryan Kuse", rec:"9-2"} },
+    { id:"f11", title:false, weight:"Peso-Leve",              a:{name:"Gauge Young", rec:"11-3"},         b:{name:"Stan Dorsainvil", rec:"5-0"} },
+    { id:"f12", title:false, weight:"Peso-Médio",             a:{name:"Jackson McVey", rec:"7-2"},        b:{name:"Wes Schultz", rec:"9-3"} },
+    { id:"f13", title:false, weight:"Peso-Palha (F)",         a:{name:"Shanelle Dyer", rec:"7-1"},        b:{name:"Elise Reed", rec:"8-5"} }
   ]
 };
-/* ========================================================================= */
 
 document.getElementById('eventTitle').innerHTML = EVENT.titleLine1 + '<br><span>' + EVENT.titleLine2 + '</span>';
 document.getElementById('eventMatchup').textContent = EVENT.matchupLabel;
@@ -426,10 +422,9 @@ document.getElementById('rulesPrizeTitle').textContent = 'Prêmio: ' + EVENT.pri
 document.getElementById('progressCount').innerHTML = '<b>0</b>/' + EVENT.fights.length + ' lutas';
 
 if(WEBAPP_URL.includes('COLE_AQUI')){
-  console.warn('⚠️ WEBAPP_URL não configurada — os palpites não vão salvar até você colar a URL do Apps Script.');
+  console.warn('⚠️ WEBAPP_URL não configurada.');
 }
 
-// ---------- Countdown ----------
 function initials(name){
   return name.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
 }
@@ -463,7 +458,6 @@ function lockEverything(){
   document.getElementById('lockSub').textContent = 'O card já começou — não dá mais pra enviar palpites.';
 }
 
-// ---------- Render fights ----------
 const picks = {};
 const container = document.getElementById('fightsContainer');
 
@@ -562,7 +556,6 @@ document.getElementById('igHandle').addEventListener('input', updateLockState);
 document.getElementById('followCheck').addEventListener('change', updateLockState);
 document.getElementById('tagCheck').addEventListener('change', updateLockState);
 
-// ---------- Submit + storage ----------
 document.getElementById('submitBtn').addEventListener('click', async ()=>{
   if(locked) return;
   const handleRaw = document.getElementById('igHandle').value.trim().replace(/^@/,'');
@@ -580,19 +573,20 @@ document.getElementById('submitBtn').addEventListener('click', async ()=>{
   };
 
   try{
-    // Envia o palpite pro Google Sheets via Apps Script
     const res = await fetch(WEBAPP_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // evita preflight CORS no Apps Script
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify({ action: 'palpite', ...entry })
     });
     const json = await res.json();
     if(!json.ok) throw new Error(json.error || 'Falha ao salvar');
 
     document.getElementById('confirmHandle').textContent = '@' + handleRaw;
-    document.getElementById('confirmBox').classList.add('show');
-    document.getElementById('confirmBox').scrollIntoView({behavior:'smooth', block:'center'});
-    btn.textContent = 'Palpite enviado ✅';
+    const confirmBox = document.getElementById('confirmBox');
+    confirmBox.querySelector('.big').textContent = json.updated ? 'PALPITE ATUALIZADO ✅' : 'PALPITE TRAVADO ✅';
+    confirmBox.classList.add('show');
+    confirmBox.scrollIntoView({behavior:'smooth', block:'center'});
+    btn.textContent = json.updated ? 'Palpite atualizado ✅' : 'Palpite enviado ✅';
   }catch(err){
     btn.disabled = false;
     btn.textContent = 'Enviar palpites';
@@ -601,10 +595,6 @@ document.getElementById('submitBtn').addEventListener('click', async ()=>{
   }
 });
 
-// ---------- Admin panel ----------
-// O painel só fica acessível se o link for aberto com ?admin=1 na URL.
-// Ex: https://seusite.com/ufc-palpites.html?admin=1
-// Não divulgue essa URL em nenhum lugar público — só você deve usá-la.
 let adminUnlocked = false;
 let adminSecret = null;
 
@@ -615,7 +605,7 @@ async function sha256(text){
 
 function initAdminAccess(){
   const params = new URLSearchParams(window.location.search);
-  if(params.get('admin') !== '1') return; // sem o parâmetro, o painel nem existe pro visitante
+  if(params.get('admin') !== '1') return;
 
   const footer = document.querySelector('footer');
   const btn = document.createElement('button');
