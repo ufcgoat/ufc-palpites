@@ -35,10 +35,7 @@
     background:conic-gradient(from 210deg at 70% 30%, rgba(228,0,43,0.16), transparent 35%);
     pointer-events:none;
   }
-  .eyebrow{
-    display:flex; align-items:center; gap:10px; color:var(--red); font-weight:700; font-size:14px;
-    letter-spacing:0.16em; text-transform:uppercase; margin-bottom:14px;
-  }
+  .eyebrow{display:flex; align-items:center; gap:10px; color:var(--red); font-weight:700; font-size:14px; letter-spacing:0.16em; text-transform:uppercase; margin-bottom:14px;}
   .eyebrow::before{content:""; width:22px; height:2px; background:var(--red);}
   .hero h1{font-size:clamp(52px, 15vw, 96px); line-height:0.88; color:var(--text);}
   .hero h1 span{color:var(--red);}
@@ -159,7 +156,7 @@
   <p class="section-desc">Simples: acerte mais que os outros e ganha.</p>
   <ul class="rules-list">
     <li><span class="ico">①</span><div class="body"><b>Siga @__ufc_goat__</b><span>Só concorre quem estiver seguindo a conta no momento da apuração.</span></div></li>
-    <li><span class="ico">②</span><div class="body"><b>Marque 3 amigos nos comentários</b><span>No post de divulgação do desafio no feed — não vale marcar aqui no site.</span></div></li>
+    <li><span class="ico">②</span><div class="body"><b>Marque @__ufc_goat__ + 3 amigos nos comentários</b><span>No post de divulgação do desafio no feed — não vale marcar aqui no site.</span></div></li>
     <li><span class="ico">③</span><div class="body"><b>Palpite em todas as lutas por aqui</b><span id="rulesFightCount">São 12 confrontos no card. Você precisa escolher um vencedor em cada um.</span></div></li>
     <li><span class="ico">④</span><div class="body"><b id="rulesDeadlineTitle">Prazo: sábado (15/08), 12:00 (horário de Brasília)</b><span>Depois disso, não vale mais — os palpites travam automaticamente.</span></div></li>
     <li><span class="ico">⑤</span><div class="body"><b id="rulesPrizeTitle">Prêmio: R$30 pra quem acertar mais previsões</b><span>Pago via PIX. Em caso de empate, o valor é dividido igualmente entre todos que acertarem o mesmo número de lutas.</span></div></li>
@@ -196,7 +193,7 @@
   </label>
   <label class="follow-check">
     <input type="checkbox" id="tagCheck">
-    <span>Confirmo que marquei 3 amigos nos comentários do post do desafio</span>
+    <span>Confirmo que marquei @__ufc_goat__ e 3 amigos nos comentários do post do desafio</span>
   </label>
   <p style="font-size:12.5px; color:var(--text-dim); font-weight:600; margin:-6px 0 16px;">⚠️ Se qualquer uma dessas confirmações for falsa, seu palpite é desclassificado na apuração.</p>
   <div class="lock-bar" id="lockBar">
@@ -392,7 +389,7 @@ function updateLockState(){
     lockBar.classList.remove('locked');
     lockIcon.textContent = '🔓';
     lockTitle.textContent = 'Quase lá';
-    lockSub.textContent = !handle ? 'Coloca seu @ do Instagram' : (!follows ? 'Confirma que segue @__ufc_goat__' : 'Confirma que marcou 3 amigos nos comentários');
+    lockSub.textContent = !handle ? 'Coloca seu @ do Instagram' : (!follows ? 'Confirma que segue @__ufc_goat__' : 'Confirma que marcou @__ufc_goat__ e 3 amigos nos comentários');
     btn.classList.remove('ready'); btn.disabled = true; btn.textContent = 'Enviar palpites';
     return;
   }
