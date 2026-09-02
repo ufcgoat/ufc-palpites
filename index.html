@@ -231,31 +231,33 @@
 <script>
 const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbx7gQR0kDe4og_hTSI0nroUQ88uL6zNIYvV-0Fi9tVPgYd5tAWsDS9T-tZdRWZq1wlkOw/exec";
 
-const EVENT = {
-  id: "UFCFN285",
+
+ const EVENT = {
+  id: "UFCFN287",
   titleLine1: "UFC",
-  titleLine2: "SACRAMENTO",
-  matchupLabel: "Hernandez x Rodrigues",
-  venue: "Golden 1 Center, Sacramento",
-  dateLabel: "22 de agosto",
-  lockTimestamp: "2026-08-22T21:00:00Z",
-  deadlineLabel: "sábado (22/08), 18:00 (horário de Brasília)",
+  titleLine2: "PARIS",
+  matchupLabel: "Parnasse x Hooker",
+  venue: "Accor Arena, Paris",
+  dateLabel: "5 de setembro",
+  lockTimestamp: "2026-09-05T16:00:00Z", // sábado 05/09, 13h de Brasília (12pm ET, início dos prelims)
+  deadlineLabel: "sábado (05/09), 13:00 (horário de Brasília)",
   prizeAmount: "R$30",
   adminPinHash: "a4c42a3f5f7103ddb1042c34864a1bd8e7854308d80ab8b4bf41eb46ad62b3dc",
   fights: [
-    { id:"f1",  title:true,  weight:"Peso-Médio (Principal)", a:{name:"Anthony Hernandez", rec:"15-3"},   b:{name:"Gregory Rodrigues", rec:"19-6"} },
-    { id:"f2",  title:false, weight:"Peso-Pesado (Co-Main)",  a:{name:"Serghei Spivac", rec:"18-6"},      b:{name:"Vitor Petrino", rec:"14-2"} },
-    { id:"f3",  title:false, weight:"Meio-Pesado",            a:{name:"Reinier de Ridder", rec:"21-4"},   b:{name:"Roman Dolidze", rec:"15-5"} },
-    { id:"f4",  title:false, weight:"Peso-Leve",              a:{name:"MarQuel Mederos", rec:"11-1-1"},   b:{name:"Mason Jones", rec:"18-2"} },
-    { id:"f5",  title:false, weight:"Peso-Mosca (F)",         a:{name:"Carli Judice", rec:"6-2"},         b:{name:"Jeisla Chaves", rec:"7-0"} },
-    { id:"f6",  title:false, weight:"Peso-Pesado",            a:{name:"Anthony Wint", rec:"7-0"},         b:{name:"Terrance Chatman", rec:"5-1"} },
-    { id:"f7",  title:false, weight:"Peso-Pena",              a:{name:"Jamall Emmers", rec:"22-8"},       b:{name:"Lerryan Douglas", rec:"14-5"} },
-    { id:"f8",  title:false, weight:"Peso-Pesado",            a:{name:"Shamil Gaziev", rec:"14-3"},       b:{name:"Kennedy Nzechukwu", rec:"14-6-1"} },
-    { id:"f9",  title:false, weight:"Peso-Leve",              a:{name:"Nasrat Haqparast", rec:"18-6"},    b:{name:"Chris Padilla", rec:"17-6-1"} },
-    { id:"f10", title:false, weight:"Peso-Pena",              a:{name:"Márcio Barbosa", rec:"18-2"},      b:{name:"Ryan Kuse", rec:"9-2"} },
-    { id:"f11", title:false, weight:"Peso-Leve",              a:{name:"Gauge Young", rec:"11-3"},         b:{name:"Stan Dorsainvil", rec:"5-0"} },
-    { id:"f12", title:false, weight:"Peso-Médio",             a:{name:"Jackson McVey", rec:"7-2"},        b:{name:"Wes Schultz", rec:"9-3"} },
-    { id:"f13", title:false, weight:"Peso-Palha (F)",         a:{name:"Shanelle Dyer", rec:"7-1"},        b:{name:"Elise Reed", rec:"8-5"} }
+    { id:"f1",  title:false, weight:"Peso-Leve (Principal)",   a:{name:"Salahdine Parnasse", rec:"23-2"},    b:{name:"Dan Hooker", rec:"24-14"} },
+    { id:"f2",  title:false, weight:"Peso-Leve (Co-Main)",     a:{name:"Fares Ziam", rec:"18-5"},            b:{name:"Axel Sola", rec:"12-1-1"} },
+    { id:"f3",  title:false, weight:"Peso-Médio",              a:{name:"Michael Page", rec:"25-3"},          b:{name:"Nursulton Ruziboev", rec:"37-9-2"} },
+    { id:"f4",  title:false, weight:"Meio-Médio",              a:{name:"Punahele Soriano", rec:"13-4"},      b:{name:"Daniil Donchenko", rec:"14-2"} },
+    { id:"f5",  title:false, weight:"Peso-Pena",                a:{name:"Kurtis Campbell", rec:"8-1"},        b:{name:"Trevor Peek", rec:"9-3"} },
+    { id:"f6",  title:false, weight:"Peso-Pena",                a:{name:"Losene Keita", rec:"16-2"},          b:{name:"Muhammad Naimov", rec:"13-4"} },
+    { id:"f7",  title:false, weight:"Peso-Pena",                a:{name:"Morgan Charrière", rec:"21-12-1"},   b:{name:"Felipe Lima", rec:"14-2"} },
+    { id:"f8",  title:false, weight:"Peso-Pesado",              a:{name:"Mario Pinto", rec:"12-0"},           b:{name:"Ryan Spann", rec:"24-11"} },
+    { id:"f9",  title:false, weight:"Meio-Pesado",              a:{name:"Oumar Sy", rec:"12-2"},              b:{name:"Modestas Bukauskas", rec:"20-7"} },
+    { id:"f10", title:false, weight:"Peso-Pena",                a:{name:"Nathaniel Wood", rec:"23-6"},        b:{name:"Pavel Andrusca", rec:"8-0"} },
+    { id:"f11", title:false, weight:"Peso-Mosca",               a:{name:"Fabia Sintes", rec:"11-3"},          b:{name:"Michael Aljarouj", rec:"13-3"} },
+    { id:"f12", title:false, weight:"Peso-Galo (F)",            a:{name:"Nora Cornolle", rec:"9-4"},          b:{name:"Klaudia Syguła", rec:"8-2"} },
+    { id:"f13", title:false, weight:"Peso-Médio",               a:{name:"Luis Felipe Dias", rec:"17-5"},      b:{name:"Matthieu Duclos", rec:"10-3"} },
+    { id:"f14", title:false, weight:"Peso-Palha (F)",           a:{name:"Delphine Benouaich", rec:"7-2"},     b:{name:"Sofia Montenegro", rec:"6-2"} }
   ]
 };
 
