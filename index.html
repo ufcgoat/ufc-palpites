@@ -121,9 +121,30 @@
   .ranking-table tr.dq td{color:var(--text-dim); text-decoration:line-through; opacity:0.6;}
   .ranking-table td.pos{font-family:'Space Mono',monospace;}
   .dq-tag{font-size:10px; background:var(--red-dim); color:#fff; padding:1px 6px; border-radius:8px; margin-left:6px; text-decoration:none; display:inline-block;}
+  .gate{position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px; background:
+      linear-gradient(180deg, rgba(11,11,13,0.9), var(--bg)),
+      repeating-linear-gradient(115deg, rgba(228,0,43,0.06) 0px, rgba(228,0,43,0.06) 2px, transparent 2px, transparent 46px);}
+  .gate-box{width:100%; max-width:420px; background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:28px 22px; text-align:center;}
+  .gate-box h2{font-size:30px; margin-bottom:6px;}
+  .gate-box h2 span{color:var(--red);}
+  .gate-box p{color:var(--text-dim); font-size:16px; font-weight:500; margin-bottom:18px;}
+  .gate-box input{width:100%; background:var(--bg); border:1px solid var(--border); border-radius:8px; outline:none; color:var(--text); font-size:17px; padding:14px; font-family:'Barlow Condensed', sans-serif; font-weight:600; margin-bottom:12px;}
+  .gate-box input:focus{border-color:var(--red);}
+  .gate-box button{width:100%; background:var(--red); color:#fff; border:none; border-radius:8px; font-family:'Anton',sans-serif; text-transform:uppercase; letter-spacing:0.04em; font-size:17px; padding:15px; cursor:pointer;}
+  .gate-msg{min-height:20px; margin:12px 0 0; font-size:14px; color:var(--gold); font-weight:600;}
 </style>
 </head>
 <body>
+
+<div class="gate" id="gate">
+  <div class="gate-box">
+    <h2 class="display">Acesso <span>restrito</span></h2>
+    <p>Digite o e-mail cadastrado pra entrar e dar seu palpite.</p>
+    <input type="email" id="gateEmail" placeholder="seu@email.com" autocomplete="email" autocapitalize="none">
+    <button id="gateBtn" type="button">Entrar</button>
+    <div class="gate-msg" id="gateMsg"></div>
+  </div>
+</div>
 
 <section class="hero" id="hero">
   <div class="eyebrow">@__ufc_goat__ apresenta</div>
@@ -243,6 +264,14 @@ const EVENT = {
   deadlineLabel: "sábado (19/09), 19:00 (horário de Brasília)",
   prizeAmount: "R$30",
   adminPinHash: "a4c42a3f5f7103ddb1042c34864a1bd8e7854308d80ab8b4bf41eb46ad62b3dc",
+  // LISTA DE E-MAILS AUTORIZADOS: só quem digitar um desses e-mails na tela de entrada acessa o site.
+  // Maiúscula/minúscula não importa. Lista vazia = acesso liberado para todos.
+  allowedEmails: [
+    "teste@email.com",
+    "",
+    "",
+    ""
+  ],
   fights: [
     { id:"f1",  title:true,  weight:"Peso-Mosca (Título)",   a:{name:"Joshua Van", rec:"17-2"},           b:{name:"Alexandre Pantoja", rec:"30-6"} },
     { id:"f2",  title:false, weight:"Peso-Leve (Co-Main)",   a:{name:"Arman Tsarukyan", rec:"23-3"},      b:{name:"Mauricio Ruffy", rec:"14-2"} },
@@ -272,6 +301,58 @@ document.getElementById('progressCount').innerHTML = '<b>0</b>/' + EVENT.fights.
 if(WEBAPP_URL.includes('COLE_AQUI')){
   console.warn('⚠️ WEBAPP_URL não configurada.');
 }
+
+function normHandle(h){
+  return String(h || '').trim().replace(/^@/, '').toLowerCase();
+}
+
+function normEmail(e){
+  return String(e || '').trim().toLowerCase();
+}
+
+function isEmailAllowed(email){
+  const list = (EVENT.allowedEmails || []).map(normEmail);
+  if(list.length === 0) return true; // lista vazia = acesso liberado
+  return list.includes(normEmail(email));
+}
+
+let userEmail = '';
+
+function openGate(){
+  const gate = document.getElementById('gate');
+  if(gate) gate.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+(function initGate(){
+  const gate = document.getElementById('gate');
+  const list = EVENT.allowedEmails || [];
+  if(list.length === 0){ openGate(); return; }
+
+  try{
+    const saved = sessionStorage.getItem('gateEmail');
+    if(saved && isEmailAllowed(saved)){ userEmail = normEmail(saved); openGate(); return; }
+  }catch(e){}
+
+  document.body.style.overflow = 'hidden';
+  const input = document.getElementById('gateEmail');
+  const btn = document.getElementById('gateBtn');
+  const msg = document.getElementById('gateMsg');
+
+  function tryEnter(){
+    const val = normEmail(input.value);
+    if(!val){ msg.textContent = 'Digite seu e-mail.'; return; }
+    if(!isEmailAllowed(val)){
+      msg.textContent = 'Esse e-mail não está cadastrado. Fale com o organizador.';
+      return;
+    }
+    userEmail = val;
+    try{ sessionStorage.setItem('gateEmail', val); }catch(e){}
+    openGate();
+  }
+  btn.addEventListener('click', tryEnter);
+  input.addEventListener('keydown', e=>{ if(e.key === 'Enter') tryEnter(); });
+})();
 
 function initials(name){
   return name.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
@@ -406,13 +487,19 @@ document.getElementById('tagCheck').addEventListener('change', updateLockState);
 
 document.getElementById('submitBtn').addEventListener('click', async ()=>{
   if(locked) return;
-  const handleRaw = document.getElementById('igHandle').value.trim().replace(/^@/,'');
+  const handleRaw = normHandle(document.getElementById('igHandle').value);
   const btn = document.getElementById('submitBtn');
   btn.disabled = true;
   btn.textContent = 'Enviando...';
 
+  if(!isEmailAllowed(userEmail)){
+    alert('Faça a entrada com um e-mail cadastrado.');
+    return;
+  }
+
   const entry = {
     handle: handleRaw,
+    email: userEmail,
     event: EVENT.id,
     picks: picks,
     confirmouSeguir: document.getElementById('followCheck').checked,
