@@ -43,6 +43,7 @@ function openGate(){
   const gate = document.getElementById('gate');
   if(gate) gate.style.display = 'none';
   document.body.style.overflow = '';
+  refreshMyPicks();
 }
 
 (async function initGate(){
@@ -204,6 +205,55 @@ document.getElementById('igHandle').addEventListener('input', updateLockState);
 document.getElementById('followCheck').addEventListener('change', updateLockState);
 document.getElementById('tagCheck').addEventListener('change', updateLockState);
 
+function myPicksKey(){ return 'meusPalpites:' + EVENT.id + ':' + (userEmail || 'anon'); }
+
+function saveMyPicks(entry){
+  try{
+    localStorage.setItem(myPicksKey(), JSON.stringify({
+      handle: entry.handle, picks: entry.picks, submittedAt: entry.submittedAt
+    }));
+  }catch(e){}
+  refreshMyPicks();
+}
+
+function loadMyPicks(){
+  try{
+    const raw = localStorage.getItem(myPicksKey());
+    return raw ? JSON.parse(raw) : null;
+  }catch(e){ return null; }
+}
+
+function refreshMyPicks(){
+  const btn = document.getElementById('myPicksBtn');
+  const box = document.getElementById('myPicksBox');
+  if(!btn || !box) return;
+  const saved = loadMyPicks();
+  btn.hidden = !saved;
+  if(!saved) box.hidden = true;
+}
+
+function renderMyPicks(){
+  const box = document.getElementById('myPicksBox');
+  const saved = loadMyPicks();
+  if(!saved){ box.hidden = true; return; }
+  const when = new Date(saved.submittedAt).toLocaleString('pt-BR', {dateStyle:'short', timeStyle:'short'});
+  const rows = EVENT.fights.map(f=>{
+    const side = saved.picks[f.id];
+    const chosen = side === 'a' ? f.a.name : (side === 'b' ? f.b.name : '—');
+    return '<li><span class="vs">' + esc(f.a.name) + ' x ' + esc(f.b.name) + '</span><b>' + esc(chosen) + '</b></li>';
+  }).join('');
+  box.innerHTML = '<h3 class="display">Seus palpites</h3>'
+    + '<small>@' + esc(saved.handle) + ' · enviado em ' + esc(when) + '</small>'
+    + '<ul>' + rows + '</ul>';
+  box.hidden = false;
+}
+
+document.getElementById('myPicksBtn').addEventListener('click', ()=>{
+  const box = document.getElementById('myPicksBox');
+  if(box.hidden){ renderMyPicks(); box.scrollIntoView({behavior:'smooth', block:'nearest'}); }
+  else { box.hidden = true; }
+});
+
 document.getElementById('submitBtn').addEventListener('click', async ()=>{
   if(locked) return;
   const handleRaw = normHandle(document.getElementById('igHandle').value);
@@ -236,6 +286,7 @@ document.getElementById('submitBtn').addEventListener('click', async ()=>{
     const json = await res.json();
     if(!json.ok) throw new Error(json.error || 'Falha ao salvar');
 
+    saveMyPicks(entry);
     document.getElementById('confirmHandle').textContent = '@' + handleRaw;
     const confirmBox = document.getElementById('confirmBox');
     confirmBox.querySelector('.big').textContent = json.updated ? 'PALPITE ATUALIZADO ✅' : 'PALPITE TRAVADO ✅';

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerar hashes de e-mail</title>
+<style>
+  body{font-family:system-ui,sans-serif; max-width:640px; margin:32px auto; padding:0 16px; background:#0b0b0d; color:#eee;}
+  textarea{width:100%; min-height:140px; box-sizing:border-box; padding:10px; font-size:15px; border-radius:8px; border:1px solid #333; background:#151518; color:#eee;}
+  button{margin-top:10px; padding:12px 18px; font-size:16px; border:none; border-radius:8px; background:#e4002b; color:#fff; cursor:pointer;}
+  pre{background:#151518; padding:12px; border-radius:8px; overflow:auto; font-size:13px; white-space:pre-wrap; word-break:break-all;}
+  small{color:#999;}
+</style>
+</head>
+<body>
+<h2>Gerar lista de e-mails autorizados</h2>
+<p>Cole os e-mails (um por linha), clique em <b>Gerar</b> e copie o resultado para dentro de <code>allowedEmailHashes</code> no <code>config.js</code>.</p>
+<textarea id="emails" placeholder="amigo1@gmail.com&#10;amigo2@gmail.com"></textarea>
+<button id="go" type="button">Gerar</button>
+<pre id="out"></pre>
+<small>Tudo é calculado no seu navegador, nada é enviado. Use o mesmo <code>emailSalt</code> do <code>config.js</code>.</small>
+<script src="config.js"></script>
+<script>
+async function sha256(text){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+document.getElementById('go').addEventListener('click', async ()=>{
+  const emails = document.getElementById('emails').value
+    .split(/[\n,;]+/).map(e=>e.trim().toLowerCase()).filter(Boolean);
+  const unique = [...new Set(emails)];
+  const hashes = [];
+  for(const e of unique){ hashes.push('    "' + await sha256(EVENT.emailSalt + ':' + e) + '"'); }
+  document.getElementById('out').textContent = hashes.length
+    ? '  allowedEmailHashes: [\n' + hashes.join(',\n') + '\n  ],'
+    : 'Nenhum e-mail informado.';
+});
+</script>
+</body>
+</html>
