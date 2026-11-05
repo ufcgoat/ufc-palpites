@@ -482,5 +482,4 @@ async function loadAdminData(){
     out.value = 'Erro ao carregar: ' + err;
   }
 }
-  }
-}
+ 
