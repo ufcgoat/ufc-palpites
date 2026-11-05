@@ -462,13 +462,25 @@ async function loadAdminData(){
   try{
     const r = await fetch(`${WEBAPP_URL}?action=palpites&secret=${encodeURIComponent(adminSecret)}`);
     const json = await r.json();
-    const entries = (json.entries || []).filter(e => e.event === EVENT.id);
-    if(entries.length === 0){
-      out.value = 'Nenhum palpite encontrado ainda para ' + EVENT.id + '.';
+    if(json.error){
+      out.value = 'A planilha respondeu com erro: ' + json.error;
       return;
     }
-    out.value = entries.map(e=>JSON.stringify(e)).join('\n\n');
+    const all = json.entries || [];
+    const entries = all.filter(e => e.event === EVENT.id);
+    if(entries.length > 0){
+      out.value = entries.length + ' palpite(s) para ' + EVENT.id + ':\n\n' + entries.map(e=>JSON.stringify(e)).join('\n\n');
+      return;
+    }
+    if(all.length === 0){
+      out.value = 'A planilha não devolveu nenhum palpite.\n\nResposta completa:\n' + JSON.stringify(json).slice(0, 2000);
+      return;
+    }
+    const eventos = [...new Set(all.map(e => e.event))].join(', ');
+    out.value = 'Nenhum palpite com o código ' + EVENT.id + '.\nCódigos encontrados na planilha: ' + eventos + '\n\nÚltimos 5 palpites:\n\n' + all.slice(-5).map(e=>JSON.stringify(e)).join('\n\n');
   }catch(err){
     out.value = 'Erro ao carregar: ' + err;
+  }
+}
   }
 }
