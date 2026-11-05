@@ -3,30 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UFC Sacramento — Palpite Travado</title>
+<title>UFC Fight Night — Palpite Travado</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="gate" id="gate">
-  <div class="gate-box">
-    <h2 class="display">Acesso <span>restrito</span></h2>
-    <p>Digite o e-mail cadastrado pra entrar e dar seu palpite.</p>
-    <input type="email" id="gateEmail" placeholder="seu@email.com" autocomplete="email" autocapitalize="none">
-    <button id="gateBtn" type="button">Entrar</button>
-    <div class="gate-msg" id="gateMsg"></div>
-  </div>
-</div>
-
 <section class="hero" id="hero">
   <div class="eyebrow">@__ufc_goat__ apresenta</div>
-  <h1 class="display" id="eventTitle">UFC<br><span>330</span></h1>
-  <div class="hero-sub" id="eventMatchup">Makhachev x Machado Garry</div>
+  <h1 class="display" id="eventTitle">UFC Vegas<br><span>124</span></h1>
+  <div class="hero-sub" id="eventMatchup">Cortes Acosta x Walker</div>
   <div class="hero-meta">
-    <span>📍 <b id="eventVenue">Xfinity Mobile Arena, Philadelphia</b></span>
-    <span>🗓️ <b id="eventDate">15 de agosto</b></span>
+    <span>📍 <b id="eventVenue">Meta Apex, Las Vegas</b></span>
+    <span>🗓️ <b id="eventDate">7 de novembro</b></span>
   </div>
   <div class="countdown-block">
     <div class="countdown-label">Palpites travam em</div>
@@ -38,7 +28,7 @@
     </div>
   </div>
   <div class="prize-strip">
-    <div class="amt" id="prizeAmount">R$500</div>
+    <div class="amt" id="prizeAmount">R$30</div>
     <div class="txt">pago via PIX pra quem mais acertar os resultados</div>
   </div>
   <button class="cta-scroll" onclick="document.getElementById('regras').scrollIntoView({behavior:'smooth'})">
@@ -52,8 +42,8 @@
   <ul class="rules-list">
     <li><span class="ico">①</span><div class="body"><b>Siga @__ufc_goat__</b><span>Só concorre quem estiver seguindo a conta no momento da apuração.</span></div></li>
     <li><span class="ico">②</span><div class="body"><b>Marque @__ufc_goat__ + 3 amigos nos comentários</b><span>No post de divulgação do desafio no feed — não vale marcar aqui no site.</span></div></li>
-    <li><span class="ico">③</span><div class="body"><b>Palpite em todas as lutas por aqui</b><span id="rulesFightCount">São 12 confrontos no card. Você precisa escolher um vencedor em cada um.</span></div></li>
-    <li><span class="ico">④</span><div class="body"><b id="rulesDeadlineTitle">Prazo: sábado (15/08), 12:00 (horário de Brasília)</b><span>Depois disso, não vale mais — os palpites travam automaticamente.</span></div></li>
+    <li><span class="ico">③</span><div class="body"><b>Palpite em todas as lutas por aqui</b><span id="rulesFightCount">São 14 confrontos no card. Você precisa escolher um vencedor em cada um.</span></div></li>
+    <li><span class="ico">④</span><div class="body"><b id="rulesDeadlineTitle">Prazo: sábado (07/11), 19:00 (horário de Brasília)</b><span>Depois disso, não vale mais — os palpites travam automaticamente.</span></div></li>
     <li><span class="ico">⑤</span><div class="body"><b id="rulesPrizeTitle">Prêmio: R$30 pra quem acertar mais previsões</b><span>Pago via PIX. Em caso de empate, o valor é dividido igualmente entre todos que acertarem o mesmo número de lutas.</span></div></li>
   </ul>
   <ul class="rules-list" style="margin-top:14px;">
@@ -67,7 +57,7 @@
 <div class="progress-bar-wrap">
   <div class="progress-bar-inner">
     <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-    <div class="progress-count" id="progressCount"><b>0</b>/9 lutas</div>
+    <div class="progress-count" id="progressCount"><b>0</b>/14 lutas</div>
   </div>
 </div>
 
@@ -109,7 +99,7 @@
 </section>
 
 <footer>
-  UFC Sacramento · Palpite Travado by @__ufc_goat__
+  UFC Fight Night · Palpite Travado by @__ufc_goat__
 </footer>
 
 <div class="admin-panel" id="adminPanel">
