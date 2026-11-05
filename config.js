@@ -1,3 +1,5 @@
+const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbx7gQR0kDe4og_hTSI0nroUQ88uL6zNIYvV-0Fi9tVPgYd5tAWsDS9T-tZdRWZq1wlkOw/exec";
+
 const EVENT = {
   id: "UFCVEGAS124",
   titleLine1: "UFC Vegas",
