@@ -9,7 +9,7 @@ const EVENT = {
   dateLabel: "21 de novembro",
   lockTimestamp: "2026-11-21T15:00:00Z", // sábado 21/11, 12h de Brasília (início do preliminar)
   deadlineLabel: "sábado (21/11), 12:00 (horário de Brasília)",
-  prizeAmount: "R$50",
+  prizeAmount: "R$30",
   adminPinHash: "a4c42a3f5f7103ddb1042c34864a1bd8e7854308d80ab8b4bf41eb46ad62b3dc",
   // LISTA DE E-MAILS AUTORIZADOS: só quem digitar um desses e-mails na tela de entrada acessa o site.
   // Maiúscula/minúscula não importa. Lista vazia = acesso liberado para todos.
